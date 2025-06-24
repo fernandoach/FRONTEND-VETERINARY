@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Bungee";
+  src: url('/fonts/Bungee-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: "Oswald";
+  src: url('/fonts/Oswald.woff2') format('woff2');
+}
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto.woff2') format('woff2');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{ 
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem calc(100vh - 3rem);
+
+  grid-template-areas:  "navbar"
+                        "main";
+
+  background-color: #020202;
+  color: #f2f2f2;
+}

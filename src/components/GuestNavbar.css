@@ -1,0 +1,89 @@
+.navbar {
+  width: 100%;
+
+  grid-area: navbar;
+
+  display: grid;
+
+  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-rows: 3rem;
+
+  grid-template-areas: "navbar__title navbar__sections-menu navbar__auth-menu";
+}
+
+.navbar__title{
+  margin: auto;
+  grid-area: navbar__title;
+}
+
+.navbar__title__link{
+  text-decoration: none;
+  font-family: "Bungee";
+  color: #f2f2f2;
+}
+
+.navbar__title:hover { 
+  scale: 1.1;
+  text-shadow: 0 0 10px #949af0;
+}
+
+.navbar__sections-menu{
+  grid-area: navbar__sections-menu;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+
+}
+
+.navbar__sections-menu__link{
+  text-decoration: none;
+  font-family: "Oswald";
+  color: #908f8f;
+}
+
+.navbar__sections-menu__link:hover{
+  scale: 1.1;
+  color: #f2f2f2;
+  text-shadow: 0 0 10px #47c147;
+}
+
+.navbar__auth-menu{
+  grid-area: navbar__auth-menu;
+
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 0 3rem;
+}
+
+.navbar__auth-menu__link{
+  text-decoration: none;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap:.3rem
+}
+
+.navbar__auth-menu__link:hover {
+  scale: 1.1;
+  filter: drop-shadow(0 0 10px #949af0);
+}
+
+.navbar__auth-menu__link:hover .navbar__auth-menu__link__icon,
+.navbar__auth-menu__link:hover .navbar__auth-menu__link__text {
+  color: #f2f2f2;
+}
+
+.navbar__auth-menu__link__icon,
+.navbar__auth-menu__link__text { 
+  color: #908f8f;
+  font-family: "Oswald";
+  font-size: medium;
+}
