@@ -48,8 +48,8 @@ function Register() {
     e.preventDefault()
     setRepassword(e.target.value)
   }
-  
-  const log = `
+
+  /* const log = `
     firstname: ${firstname}
     lastname: ${lastname}
     gender: ${gender}
@@ -59,12 +59,43 @@ function Register() {
     email: ${email}
     password: ${password}
     repassword: ${repassword}
-  `
-  console.log(log)
+  ` 
+  console.log(log) */
+
+  const handlerSubmit = async (e) => { 
+    e.preventDefault()
+    try {
+      const newRegister = {
+        firstname,
+        lastname,
+        gender,
+        birthday,
+        dni,
+        telephone,
+        email,
+        password,
+        repassword
+      }
+
+      const result = await fetch('http://localhost:3000/user/register',{
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newRegister)
+      })
+
+      console.log(await result.json())
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return(
     <div className="main">
       <h1>Register</h1>
-      <form>
+      <form onSubmit={handlerSubmit}>
         <div>
           <label htmlFor="firstname">Nombres: </label>
           <input onChange={handlerFirstname} type="text" name="firstname" />
@@ -107,7 +138,7 @@ function Register() {
           <input onChange={handlerRepassword} type="password" name="repassword" required />
         </div>
         <div>
-          <button>Crear</button>
+          <button type="submit">Crear</button>
         </div>
       </form>
     </div>
