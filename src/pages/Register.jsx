@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Register() {
 
@@ -11,6 +12,9 @@ function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repassword, setRepassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const navigate = useNavigate()
 
   const handlerFirstname = (e) => {
     e.preventDefault()
@@ -85,7 +89,17 @@ function Register() {
         body: JSON.stringify(newRegister)
       })
 
-      console.log(await result.json())
+      const fetchState = result.status
+
+      if(fetchState === 400){ 
+        const { message }  = await result.json()
+        setErrorMessage(message)
+      } 
+
+      if(fetchState === 200) {
+        alert('registrado cone xito')
+        return navigate('/login')
+      }  
 
     } catch (error) {
       console.log(error)
@@ -95,6 +109,10 @@ function Register() {
   return(
     <div className="main">
       <h1>Register</h1>
+      <br />
+      <strong>{errorMessage}</strong>
+      <br />
+      <br />
       <form onSubmit={handlerSubmit}>
         <div>
           <label htmlFor="firstname">Nombres: </label>
