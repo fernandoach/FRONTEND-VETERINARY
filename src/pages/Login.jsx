@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function Login() {
   // paso 2: gestionar inputs con estados
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -52,7 +53,7 @@ function Login() {
             break
           case 'U':
             console.log('Redirigir a panel user')
-            return Navigate('/user-panel')
+            return navigate('/user-panel')
           case 'V':
             console.log('Redirigir a panel veterinario')
             break
