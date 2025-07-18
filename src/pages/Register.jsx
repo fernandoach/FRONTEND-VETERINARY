@@ -81,7 +81,7 @@ function Register() {
         repassword
       }
 
-      const result = await fetch('http://localhost:3000/user/register',{
+      const result = await fetch('http://localhost:3000/user',{
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'

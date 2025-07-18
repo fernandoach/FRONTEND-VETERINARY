@@ -7,6 +7,7 @@ import { GuestNavbar } from './components/GuestNavbar'
 import { Services } from './pages/Services'
 import { AboutMe } from './pages/AboutMe'
 import { Contact } from './pages/Contact'
+import UserPanel from './pages/UserPanel'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path='/services' Component={Services}/>
         <Route path='/aboutme' Component={AboutMe}/>
         <Route path='/contact' Component={Contact}/>
+        <Route path='/user-panel' Component={UserPanel}/>
       </Routes>
     </>
   )

@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { Navigate } from "react-router-dom"
 
 function Login() {
   // paso 2: gestionar inputs con estados
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handlerEmail = (e) => {
     e.preventDefault()
@@ -30,23 +32,27 @@ function Login() {
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(credenciales)
       })
 
+      console.log(request)
+
       if(!request.ok){
         const {message} = await request.json()
+        setError(message)
         console.log(message)
       }
 
       if(request.ok){
-        const {accesToken, role} = await request.json()
+        const {role} = await request.json()
         switch(role){
           case 'A':
             console.log('Redirigir a panel admin')
             break
           case 'U':
             console.log('Redirigir a panel user')
-            break
+            return Navigate('/user-panel')
           case 'V':
             console.log('Redirigir a panel veterinario')
             break
@@ -60,9 +66,12 @@ function Login() {
     }
   }
 
+  
+
   return(
     <div className="main">
       <h1>Login</h1>
+      {error && <p>{error}</p>}
       <form onSubmit={handlerSubmit}>
         <div>
           <label htmlFor="email">Correo electrónico</label>
